@@ -1,0 +1,2018 @@
+/*
+// - - - - - - - - - - - - - - - - - - -
+// W F - G A M E - R U N - v001
+// - - - - - - - - - - - - - - - - - - -
+// #wf-202303152044
+// #wf-202306112018
+// - - - - - - - - - - - - - - - - - - -
+// a WizrdFLY [dev front end web]
+// https://wizrdfly.rf.gd
+// - - - - - - - - - - - - - - - - - - -
+*/
+/* reset */
+html, body, section, div, header, footer, p, i, em, a, img, b, strong, ul, li, span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+}
+
+/* config */
+body {
+    font-family: 'Arial';
+    font-family: 'Bruno Ace SC', cursive;
+    background: #0c1122;
+    filter: hue-rotate(0deg);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
+body.noFilter, body.noFilter * {
+    filter: none !important;
+}
+
+body.noPlay .boxBgs, body.noPlay .lines .bgLine .box {
+    animation: unset;
+}
+
+body.noFilter .lines .bgLine .box .spr .bLife, body.noFilter .boxCards .card {
+    backdrop-filter: unset;
+}
+
+.font{
+    font-family: 'Anface Personal Use', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.afterClear:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+/* game */
+.game {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* version */
+.version {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 31;
+    pointer-events: none;
+}
+
+.version p {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 10px;
+    color: #FFFFFF;
+    display: block;
+}
+
+/* message */
+.message {
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    /* background: rgb(0 0 0 / 26%); */
+    /* backdrop-filter: blur(3px); */
+    transition: top 0.4s;
+}
+
+.message.active {
+    top: 0;
+}
+
+.message div {
+    width: calc(100% - 30px);
+    max-width: 310px;
+    margin: calc(50vh - (100px / 2)) auto;
+    margin: 60px auto 0;
+    background: #FFFFFF;
+    padding: 15px 10px 15px 20px;
+    position: relative;
+    vertical-align: middle;
+    /* height: calc(100px - 20px); */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.message div:before {
+    content: '';
+    width: 12px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+}
+
+.message.success div:before {
+    background: #47d764;
+}
+
+.message.error div:before {
+    background: #ff355b;
+}
+
+.message.info div:before {
+    background: #2f86eb;
+}
+
+.message.alert div:before {
+    background: #ffc021;
+}
+
+.message div i {
+    position: relative;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    background-size: unset !important;
+    top: unset;
+    left: unset;
+    bottom: unset;
+}
+
+.message div p {
+    display: inline-block;
+    width: calc(100% - 50px);
+    vertical-align: middle;
+    color: #515151;
+    font-size: 16px;
+    line-height: 18px;
+    /* text-transform: uppercase; */
+}
+
+.message div p strong {
+    display: block;
+    /* margin: 0 0 5px; */
+    text-transform: uppercase;
+    font-size: 17px;
+    /* font-weight: normal; */
+    line-height: 22px;
+    letter-spacing: 2px;
+}
+
+.message div:after {
+    content: 'x';
+    /* width:20px; */
+    /* height:20px; */
+    /* background: #9d9d9d; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    margin: 10px 7px;
+    display: block;
+    font-size: 15px;
+    line-height: 0;
+    /* text-transform: uppercase; */
+    font-weight: 700;
+    color: #888;
+    text-align: center;
+    /* border-radius:50%; */
+}
+
+/* boxStart */
+.boxStart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 30;
+    width: 100vw;
+    height: 100vh;
+}
+
+.boxStart:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0 0 0 / 80%);
+    backdrop-filter: blur(5px);
+    transition: background 0.4s, backdrop-filter 0.4s;
+}
+
+.boxStart.active:before {
+    background: rgb(255 255 255 / 0%);
+    backdrop-filter: none;
+}
+
+.boxStart .brand {
+    position: absolute;
+    top: calc(50% - (221px / 2));
+    left: calc(50% - (300px / 2));
+    z-index: 1;
+    width: 300px;
+    height: 221px;
+    transition: top 0.4s, opacity 0.4s;
+}
+
+.boxStart.active .brand {
+    top: calc(65% - (265px / 2));
+    opacity: 0;
+}
+
+.boxStart .brand h1 {
+    position: absolute;
+    left: 133px;
+    top: 16px;
+    z-index: 3;
+    text-transform: uppercase;
+    font-size: 27px;
+    line-height: 0;
+    letter-spacing: 4px;
+    font-weight: 800;
+    transform: rotateZ(-8deg);
+}
+
+.boxStart .brand h1 em {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    z-index: 10;
+    text-transform: uppercase;
+    font-size: 18px;
+    /* letter-spacing: 16px; */
+    /* font-weight: 800; */
+}
+
+.boxStart .brand .spr.content.sStart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.boxStart .brand .spr.content.sDragon {
+    left: 0;
+    top: 11px;
+    z-index: 2;
+}
+
+.boxStart .brand .spr.content.sDragonAttack {
+    left: 136px;
+    top: 61px;
+    z-index: 2;
+}
+
+.boxStart .brand .spr.content.sJinn {
+    left: 236px;
+    top: 107px;
+    z-index: 3;
+}
+
+.boxStart .brand .spr.content.sJinnAttack {
+    left: 174px;
+    top: 44px;
+    z-index: 3;
+}
+
+.boxStart .brand .boxBtn .spr.content {
+    pointer-events: none;
+}
+
+.boxStart .brand .boxBtn {
+    position: absolute;
+    left: 0;
+    top: 119px;
+    z-index: 5;
+    width: 100%;
+}
+
+.boxStart .brand .boxBtn ul {
+    position: relative;
+    display: block;
+}
+
+.boxStart .brand .boxBtn ul li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+    vertical-align: middle;
+    transform: rotateZ(-8deg);
+}
+
+.boxStart .brand .boxBtn ul li:nth-child(1) {
+    top: 0;
+    left: 49px;
+}
+
+.boxStart .brand .boxBtn ul li:nth-child(2) {
+    top: 45px;
+    left: 22px;
+    width: 100%;
+    vertical-align: top;
+    /* transform: rotateZ(-8deg); */
+}
+
+.boxStart .brand .boxBtn ul li:nth-child(3) {
+    top: 113px;
+    left: 12px;
+}
+
+.boxStart .brand .boxBtn ul li:nth-child(4) {
+    top: 104px;
+    left: 48px;
+}
+
+.boxStart .brand .boxBtn ul li a {
+    letter-spacing: 1px;
+    font-weight: 800;
+    /* transform: rotateZ(-8deg); */
+    display: inline-block;
+    /* width: 100%; */
+    vertical-align: top;
+    margin: 0 10px 0 0;
+}
+
+.boxStart .brand .boxBtn ul li a:last-child {
+    margin: 0;
+}
+
+.boxStart .brand .boxBtn ul li a .spr {
+    left: unset;
+    top: unset;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.boxStart .brand .boxBtn ul li a:hover .spr, .boxStart .brand .boxBtn ul li a:focus .spr {
+    filter: invert(100%) drop-shadow(2px 1px 0 rgb(0 0 0 / 45%));
+}
+
+.boxStart .brand .boxBtn ul li a strong {
+    display: inline-block;
+    font-weight: 600;
+    color: #000000;
+    font-size: 13px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.boxStart .brand .boxBtn ul li a:hover strong, .boxStart .brand .boxBtn ul li a:focus strong {
+    color: #FFFFFF;
+    filter: drop-shadow(2px 1px 0 rgb(0 0 0 / 45%));
+}
+
+/* boxBgs */
+.boxBgs {
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.boxBgs .spr.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-size: auto 130%;
+}
+
+.boxBgs .spr.bg.bg001 {
+    background-image: url(../img/bg-nature-florest/bg-01.png);
+    z-index: 1;
+    animation: boxBgs 600s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg002 {
+    background-image: url(../img/bg-nature-florest/bg-02.png);
+    z-index: 2;
+    animation: boxBgs 570s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg003 {
+    background-image: url(../img/bg-nature-florest/bg-03.png);
+    z-index: 3;
+    animation: boxBgs 540s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg004 {
+    background-image: url(../img/bg-nature-florest/bg-04.png);
+    z-index: 4;
+    animation: boxBgs 510s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg005 {
+    background-image: url(../img/bg-nature-florest/bg-05.png);
+    z-index: 5;
+    animation: boxBgs 480s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg006 {
+    background-image: url(../img/bg-nature-florest/bg-06.png);
+    z-index: 6;
+    animation: boxBgs 450s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg007 {
+    background-image: url(../img/bg-nature-florest/bg-07.png);
+    z-index: 7;
+    animation: boxBgs 420s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg008 {
+    background-image: url(../img/bg-nature-florest/bg-08.png);
+    z-index: 8;
+    animation: boxBgs 390s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg009 {
+    background-image: url(../img/bg-nature-florest/bg-09.png);
+    z-index: 9;
+    animation: boxBgs 360s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg010 {
+    background-image: url(../img/bg-nature-florest/bg-010.png);
+    z-index: 10;
+    animation: boxBgs 330s 0s linear infinite;
+}
+
+.boxBgs .spr.bg.bg011 {
+    background-image: url(../img/bg-nature-florest/bg-011.png);
+    z-index: 11;
+    animation: boxBgs 300s 0s linear infinite;
+}
+
+/* asideMenu */
+.asideMenu {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    z-index: 28;
+    height: 100%;
+    /* padding: 8px; */
+    width: 100%;
+    max-width: 204px;
+    /*     overflow: auto; */
+    /* filter: unset !important; */
+    /* letter-spacing: 1px; */
+    /* backdrop-filter: blur(3px); */
+    transition: left 0.4s;
+}
+
+.asideMenu.active {
+    left: 0;
+}
+
+/*
+.asideMenu:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    z-index: 0;
+    height: 100%;
+    background: rgb(255 255 255 / 60%);
+    width: 100%;
+    max-width: 220px;
+    display: block;
+    transition: left 0.4s;
+    box-shadow: 6px 0 10px 0 rgb(0 0 0 / 65%);
+}
+
+.asideMenu.active:before {
+    left: 0;
+}
+*/
+.asideMenu div.content {
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: -100vw; */
+    /* z-index: 0; */
+    height: calc(100% - 24px);
+    background: rgb(255 255 255 / 60%);
+    width: 100%;
+    padding: 12px 10px;
+    max-width: 220px;
+    display: block;
+    transition: left 0.4s;
+    /* position: static; */
+    overflow: auto;
+    /* filter: unset !important; */
+}
+
+.asideMenu.active div.content {
+    left: 0;
+}
+
+.asideMenu .box, .asideMenu .box * {
+    position: relative;
+    z-index: 1;
+}
+
+.asideMenu .mask {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0 0 0 / 26%);
+    /* pointer-events:none; */
+    backdrop-filter: blur(3px);
+    transition: left 0.4s;
+}
+
+.asideMenu.active .mask {
+    left: 0;
+}
+
+.asideMenu .box {
+    margin: 0 0 10px;
+}
+
+.asideMenu .box:last-of-type {
+    margin: 0;
+}
+
+.asideMenu .box h1 {
+    margin: 0;
+    font-size: 33px;
+    line-height: 33px;
+    display: block;
+    text-transform: uppercase;
+    vertical-align: middle;
+    /* letter-spacing: 1px; */
+    color: #000000;
+    letter-spacing: 2px;
+    text-align: right;
+}
+
+.asideMenu .box h1 em {
+    font-style: normal;
+    font-size: 19px;
+    display: block;
+    vertical-align: middle;
+    line-height: 19px;
+}
+
+.asideMenu .box p {
+    font-size: 13px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 14px;
+    margin: 0 0 5px;
+    color: #000000;
+}
+
+.asideMenu .box ul {
+    padding: 5px;
+    background: rgb(0 0 0 / 65%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.asideMenu .box ul li {
+    display: block;
+}
+
+.asideMenu .box ul li a {
+    position: relative;
+    display: block;
+    color: #FFFFFF;
+}
+
+.asideMenu .box ul li a i {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.asideMenu .box ul li a strong {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+    /* line-height: 16px; */
+    /* letter-spacing: 1px; */
+}
+
+/* menu */
+.boxMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    display: none;
+}
+
+.menu {
+    padding: 5px;
+    background: rgb(0 0 0 / 25%);
+    text-align: right;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu li a {
+    display: block;
+    /* margin: 5px; */
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    /* text-transform: uppercase; */
+}
+
+/* boxBtnMenu */
+.boxBtnMenu {
+    position: fixed;
+    top: 0;
+    top: 47px;
+    left: 0;
+    z-index: 10;
+    margin: 10px 0 0 10px;
+    /* background: #FF0000; */
+    /* padding: 10px; */
+}
+
+.boxBtnMenu a {
+    display: block;
+    padding: 2px 0;
+}
+
+.boxBtnMenu a i {
+    display: block;
+    position: relative;
+    filter: invert(1);
+    pointer-events: none;
+}
+
+/* boxLife */
+.boxLife {
+    position: fixed;
+    top: 0;
+    top: 47px;
+    left: 40px;
+    z-index: 10;
+    margin: 10px;
+}
+
+.boxLife i {
+    position: relative;
+    margin: 0 6px 0 0;
+    float: left;
+}
+
+.boxLife i:last-of-type {
+    margin: 0;
+}
+
+.boxPlayer {
+    position: fixed;
+    top: 50px;
+    top: 100px;
+    left: 10px;
+    z-index: 10;
+}
+
+/* boxPoints - boxStage - boxKills */
+.boxPoints, .boxStage, .boxKills {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+.boxPoints i, .boxStage i, .boxKills i {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+.boxPoints span, .boxStage span, .boxKills span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 14px;
+    font-weight: 800;
+}
+
+.boxStage {
+    top: 50px;
+    left: 75px;
+}
+
+.boxKills {
+    top: 50px;
+    left: 135px;
+}
+
+/* boxBar */
+.boxBar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    /* width: calc(100% - (115px / 2)); */
+    width: calc(100% - 20px);
+    /* max-width: 670px; */
+}
+
+.boxBar .bar {
+    position: relative;
+}
+
+.boxBar .barDragon {
+    position: absolute;
+    right: unset;
+    left: calc(100% - (115px / 1.5));
+    bottom: 0;
+}
+
+/* boxCards */
+.boxCards {
+    position: fixed;
+    bottom: 10px;
+    left: -250px;
+    z-index: 16;
+    pointer-events: none;
+    transition: left 0.4s;
+}
+
+.boxCards.active {
+    left: 10px;
+}
+
+.boxCards .card {
+    width: 170px;
+    width: 200px;
+    color: #FFFFFF;
+    font-size: 12px;
+    background: rgb(255 255 255 / 25%);
+    box-shadow: 4px 4px 10px rgb(0 0 0 / 25%), 4px 4px 20px 4px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 8px 12px;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+.boxCards .card * {
+    opacity: 1;
+}
+
+.boxCards .card .top {
+    position: relative;
+    z-index: 1;
+    padding: 7px;
+    z-index: 6;
+    background: rgb(0 204 255 / 35%);
+}
+
+.boxCards .card .top .star {
+    position: relative;
+    float: left;
+}
+
+.boxCards .card .top .name {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+    float: right;
+    text-transform: uppercase;
+}
+
+.boxCards .card .center {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 0 7px;
+    padding: 7px;
+    width: calc(100% - 14px);
+}
+
+.boxCards .card .center .spr {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    margin: 0 auto;
+    display: block;
+    z-index: 2;
+    animation: unset;
+}
+
+.boxCards .card .bottom {
+    position: relative;
+    z-index: 1;
+    z-index: 6;
+    background: rgb(0 204 255 / 35%);
+    padding: 7px;
+}
+
+.boxCards .card .bottom .type {
+    background: rgb(0 0 0 / 30%);
+    padding: 3px 0;
+    font-size: 12px;
+    margin: 0 0 5px;
+    line-height: 12px;
+    font-weight: 700;
+}
+
+.boxCards .card .bottom .description {
+    font-size: 12px;
+    line-height: 13px;
+    margin: 0 0 8px;
+}
+
+.boxCards .card .bottom .attributes li {
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.boxCards .card .bottom .attributes li .spr {
+    position: relative;
+    bottom: unset;
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+.boxCards .card .bottom .attributes li span {
+    position: relative;
+}
+
+.boxCards .card .bottom .attributes .aLife, .boxCards .card .bottom .attributes .aAttack, .boxCards .card .bottom .attributes .aMoney {
+    width: calc(100% - 42px);
+    height: 8px;
+    display: inline-block;
+    border: 4px solid rgb(255 255 255 / 50%);
+    pointer-events: none;
+    transform: skewX(-20deg);
+    vertical-align: middle;
+}
+
+.boxCards .card .bottom .attributes .aLife b, .boxCards .card .bottom .attributes .aAttack b, .boxCards .card .bottom .attributes .aMoney b {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.boxCards .card .bottom .attributes .aLife b:before, .boxCards .card .bottom .attributes .aAttack b:before, .boxCards .card .bottom .attributes .aMoney b:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(0 0 0 / 45%), transparent);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.boxCards .card .bottom .attributes .life b {
+    background: #ff0000;
+}
+
+.boxCards .card .bottom .attributes .attack b {
+    background: #00ccff;
+}
+
+.boxCards .card .bottom .attributes .money b {
+    background: #fff700;
+}
+
+/* boxLines */
+.boxLines {
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2vh;
+    left: 0;
+    z-index: 15;
+}
+
+.boxLines .limitBar {
+    width: 10px;
+    height: 100%;
+    background-position: 100% -35px;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 150px;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* lines */
+.lines {
+    width: 100%;
+    display: block;
+}
+
+.lines .bgLine {
+    width: 100%;
+    height: 6.5vh;
+    margin: 0 0 2vh;
+    display: block;
+    float: left;
+    position: relative;
+}
+
+.lines .bgLine:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/spr-line-04.png);
+    background-repeat: repeat-x;
+    background-size: auto 90%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.lines .bgLine:nth-child(1) {
+    z-index: 1;
+}
+
+.lines .bgLine:nth-child(1):before {
+    background-position: bottom center;
+    animation: bg 300s 0s linear infinite;
+}
+
+.lines .bgLine:nth-child(2) {
+    z-index: 2;
+}
+
+.lines .bgLine:nth-child(2):before {
+    background-position: bottom center;
+    animation: bg 270s 0s linear infinite;
+}
+
+.lines .bgLine:nth-child(3) {
+    z-index: 3;
+}
+
+.lines .bgLine:nth-child(3):before {
+    background-position: bottom center;
+    animation: bg 240s 0s linear infinite;
+}
+
+.lines .bgLine:last-of-type {
+    margin: 0;
+}
+
+.lines .bgLine .box {
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+.lines .bgLine .box.ani {
+    animation: trl 5000s 0s linear infinite;
+}
+
+/* sprites */
+.spr {
+    display: inline-block;
+    position: relative;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    bottom: 40%;
+}
+
+.spr.death {
+    pointer-events: none;
+}
+
+.spr.invert {
+    filter: invert(100%);
+}
+
+.spr.rot {
+    transform: rotateY(180deg);
+    filter: drop-shadow(-5px 5px 8px #000000);
+}
+
+.lines .bgLine .box .spr {
+    transition: opacity 0.4s;
+}
+
+.lines .bgLine .box .spr.opc {
+    opacity: 0;
+}
+
+.lines .bgLine .box .spr .bLife {
+    width: 100px;
+    height: 8px;
+    background: rgb(255 255 255 / 50%);
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: calc(50% - 50px);
+    border: 4px solid #363636;
+    border: 4px solid rgb(255 255 255 / 0%);
+    pointer-events: none;
+    transform: rotateY(180deg) skewX(-20deg);
+    backdrop-filter: blur(3px);
+}
+
+.lines .bgLine .box .spr .bLife b {
+    width: 100px;
+    height: 100%;
+    background: #ff0000;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.lines .bgLine .box .spr .bLife b:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(0 0 0 / 45%), transparent);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* content */
+.spr.content {
+    background-image: url(../img/spr-content.png);
+    background-repeat: no-repeat;
+}
+
+/* msg msgSuccess */
+.spr.content.msgSuccess {
+    width: 31px;
+    height: 31px;
+    background-position: -535px -236px;
+    background-size: 550px auto;
+}
+
+/* msg msgError */
+.spr.content.msgError {
+    width: 31px;
+    height: 31px;
+    background-position: -568px -236px;
+    background-size: 550px auto;
+}
+
+/* msg msgInfo */
+.spr.content.msgInfo {
+    width: 31px;
+    height: 31px;
+    background-position: -601px -236px;
+    background-size: 550px auto;
+}
+
+/* msg msgAlert */
+.spr.content.msgAlert {
+    width: 31px;
+    height: 31px;
+    background-position: -634px -236px;
+    background-size: 550px auto;
+}
+
+/* details star */
+.spr.content.star {
+    width: 19px;
+    height: 19px;
+    background-position: -22px -152px;
+    background-size: 550px auto;
+}
+
+/* details life */
+.spr.content.dLife {
+    width: 24px;
+    height: 25px;
+    background-position: -81px -133px;
+}
+
+/* details attack */
+.spr.content.dAttack {
+    width: 24px;
+    height: 25px;
+    background-position: -55px -133px;
+}
+
+/* details money */
+.spr.content.dMoney {
+    width: 24px;
+    height: 25px;
+    background-position: -1px -133px;
+}
+
+/* details stage */
+.spr.content.dStage {
+    width: 24px;
+    height: 25px;
+    background-position: -55px -161px;
+}
+
+/* details kill */
+.spr.content.dKill {
+    width: 24px;
+    height: 25px;
+    background-position: -27px -162px;
+}
+
+/* life */
+.spr.content.life {
+    width: 28px;
+    height: 27px;
+    background-position: -1px -19px;
+    background-size: 350px auto;
+}
+
+/* bar */
+.spr.content.bar {
+    width: 100%;
+    height: 34px;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.spr.content.bar b {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0 204 255 / 70%);
+    display: block;
+    z-index: 1;
+}
+
+/* barDragon */
+.spr.content.barDragon {
+    width: 115px;
+    height: 88px;
+    background-position: -59px -37px;
+}
+
+/* startscreen sStart */
+.spr.content.sStart {
+    width: 289px;
+    height: 221px;
+    background-position: -110px -130px;
+}
+
+/* startscreen sDragon */
+.spr.content.sDragon {
+    width: 130px;
+    height: 106px;
+    background-position: -404px -200px;
+    z-index: 2;
+}
+
+/* startscreen sDragonAttack */
+.spr.content.sDragonAttack {
+    width: 79px;
+    height: 47px;
+    background-position: -186px -79px;
+    z-index: 2;
+}
+
+/* startscreen sJinn */
+.spr.content.sJinn {
+    width: 38px;
+    height: 84px;
+    background-position: -412px -80px;
+    z-index: 3;
+}
+
+/* startscreen sJinnAttack */
+.spr.content.sJinnAttack {
+    width: 161px;
+    height: 148px;
+    background-position: -487px -41px;
+    z-index: 4;
+}
+
+/* startscreen sGreen */
+.spr.content.sGreen {
+    width: 100%;
+    height: 98px;
+    background-position: 0 -363px;
+    background-repeat: repeat-x;
+    z-index: 5;
+}
+
+/* startscreen sBtnStart */
+.spr.content.sBtnStart {
+    width: 24px;
+    height: 24px;
+    background-position: -537px -210px;
+}
+
+/* startscreen sBtnOptions */
+.spr.content.sBtnOptions {
+    width: 24px;
+    height: 24px;
+    background-position: -562px -210px;
+}
+
+/* startscreen sBtnFacebook */
+.spr.content.sBtnFacebook {
+    width: 24px;
+    height: 24px;
+    background-position: -587px -210px;
+}
+
+/* startscreen sBtnHome */
+.spr.content.sBtnHome {
+    width: 24px;
+    height: 24px;
+    background-position: -612px -210px;
+}
+
+/* player boss001 */
+.spr.boss001 {
+    background-image: url(../img/spr-boss001.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss001.walk {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss001Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss001.death {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player boss002 */
+.spr.boss002 {
+    background-image: url(../img/spr-boss002.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss002.walk {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss002Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss002.death {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player boss003 */
+.spr.boss003 {
+    background-image: url(../img/spr-boss003.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss003.walk {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss003Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss003.death {
+    width: 463px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player boss004 */
+.spr.boss004 {
+    background-image: url(../img/spr-boss004.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss004.walk {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss004Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss004.death {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player boss005 */
+.spr.boss005 {
+    background-image: url(../img/spr-boss005.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss005.walk {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss005Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss005.death {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player boss006 */
+.spr.boss006 {
+    background-image: url(../img/spr-boss006.png);
+    background-repeat: no-repeat;
+}
+
+.spr.boss006.walk {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+    animation: boss006Walk 0.8s 0s steps(10, end) infinite;
+}
+
+.spr.boss006.death {
+    width: 433px;
+    height: 311px;
+    background-position: 0 0;
+}
+
+/* player medusa */
+.spr.medusa {
+    background-image: url(../img/spr-medusa.png);
+    background-repeat: no-repeat;
+}
+
+.spr.medusa.line {
+    background-image: url(../img/spr-line-medusa.png);
+}
+
+.spr.medusa.idle {
+    width: 66px;
+    height: 64px;
+    background-position: 0 0;
+    animation: medusaIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.medusa.walk {
+    width: 66px;
+    height: 64px;
+    background-position: 0 -64px;
+    animation: medusaWalk 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.medusa.hurt {
+    width: 67px;
+    height: 64px;
+    background-position: 0 -199px;
+    animation: medusaHurt 0.8s 0s steps(2, end) infinite;
+}
+
+.spr.medusa.attack {
+    width: 92px;
+    height: 71px;
+    background-position: 0 -128px;
+    animation: medusaAttack 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.medusa.death {
+    width: 67px;
+    height: 64px;
+    background-position: 0 -199px;
+    animation: medusaDeath 0.8s 0s steps(5, end);
+    animation-fill-mode: forwards;
+}
+
+/* player smallDragon */
+.spr.smallDragon {
+    background-image: url(../img/spr-dragon-small.png);
+    background-repeat: no-repeat;
+}
+
+.spr.smallDragon.line {
+    background-image: url(../img/spr-line-dragon-small.png);
+}
+
+.spr.smallDragon.idle {
+    width: 79px;
+    height: 38px;
+    background-position: 0 0;
+    animation: smallDragonIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.smallDragon.walk {
+    width: 79px;
+    height: 38px;
+    background-position: 0 -38px;
+    animation: smallDragonWalk 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.smallDragon.attack {
+    width: 103px;
+    height: 38px;
+    background-position: 0 -76px;
+    animation: smallDragonAttack 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.smallDragon.death {
+    width: 79px;
+    height: 38px;
+    background-position: 0 -114px;
+    animation: smallDragonDeath 0.8s 0s steps(3, end);
+    animation-fill-mode: forwards;
+}
+
+/* player lizardman */
+.spr.lizardman {
+    background-image: url(../img/spr-lizardman.png);
+    background-repeat: no-repeat;
+}
+
+.spr.lizardman.line {
+    background-image: url(../img/spr-line-lizardman.png);
+}
+
+.spr.lizardman.idle {
+    width: 92px;
+    height: 51px;
+    background-position: 0 0;
+    animation: lizardmanIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.lizardman.walk {
+    width: 92px;
+    height: 56px;
+    background-position: 0 -51px;
+    animation: lizardmanWalk 0.8s 0s steps(6, end) infinite;
+}
+
+.spr.lizardman.attack {
+    width: 100px;
+    height: 62px;
+    background-position: 0 -107px;
+    animation: lizardmanAttack 0.8s 0s steps(5, end) infinite;
+}
+
+.spr.lizardman.death {
+    width: 95px;
+    height: 56px;
+    background-position: 0 -169px;
+    animation: lizardmanDeath 0.8s 0s steps(5, end);
+    animation-fill-mode: forwards;
+}
+
+/* player demon */
+.spr.demon {
+    background-image: url(../img/spr-demon.png);
+    background-repeat: no-repeat;
+}
+
+.spr.demon.line {
+    background-image: url(../img/spr-line-demon.png);
+}
+
+.spr.demon.idle {
+    width: 84px;
+    height: 97px;
+    background-position: 0 0;
+    animation: demonIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.demon.walk {
+    width: 84px;
+    height: 97px;
+    background-position: 0 -97px;
+    animation: demonWalk 0.8s 0s steps(6, end) infinite;
+}
+
+.spr.demon.attack {
+    width: 117px;
+    height: 120px;
+    background-position: 0 -194px;
+    animation: demonAttack 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.demon.death {
+    width: 93px;
+    height: 97px;
+    background-position: 0 -314px;
+    animation: demonDeath 0.8s 0s steps(5, end);
+    animation-fill-mode: forwards;
+}
+
+/* player jinn */
+.spr.jinn {
+    background-image: url(../img/spr-jinn.png);
+    background-repeat: no-repeat;
+}
+
+.spr.jinn.line {
+    background-image: url(../img/spr-line-jinn.png);
+}
+
+.spr.jinn.idle {
+    width: 45px;
+    height: 92px;
+    background-position: 0 0;
+    animation: jinnIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.jinn.walk {
+    width: 54px;
+    height: 92px;
+    background-position: 0 -92px;
+    animation: jinnWalk 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.jinn.attack {
+    width: 83px;
+    height: 92px;
+    background-position: 0 -184px;
+    animation: jinnAttack 0.8s 0s steps(4, end) infinite;
+}
+
+.spr.jinn.death {
+    width: 54px;
+    height: 92px;
+    background-position: 0 -276px;
+    animation: jinnDeath 0.8s 0s steps(3, end);
+    animation-fill-mode: forwards;
+}
+
+/* player dragon */
+.spr.dragon {
+    background-image: url(../img/spr-dragon.png);
+    background-repeat: no-repeat;
+}
+
+.spr.dragon.line {
+    background-image: url(../img/spr-line-dragon.png);
+}
+
+.spr.dragon.idle {
+    width: 161px;
+    height: 86px;
+    background-position: 0 0;
+    animation: dragonIdle 0.8s 0s steps(3, end) infinite;
+}
+
+.spr.dragon.walk {
+    width: 161px;
+    height: 86px;
+    background-position: 0 -86px;
+    animation: dragonWalk 0.8s 0s steps(5, end) infinite;
+}
+
+.spr.dragon.attack {
+    width: 163px;
+    height: 131px;
+    background-position: 0 -172px;
+    animation: dragonAttack 0.8s 0s steps(5, end) infinite;
+}
+
+.spr.dragon.death {
+    width: 164px;
+    height: 86px;
+    background-position: 0 -303px;
+    animation: dragonDeath 0.8s 0s steps(3, end);
+    animation-fill-mode: forwards;
+}
+
+/* animations */
+/* box backgrounds */
+@keyframes boxBgs {
+    0% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 1000vw 100%;
+    }
+}
+
+/* green */
+@keyframes bg {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 950vw 0;
+    }
+}
+
+/* moviment */
+@keyframes trl {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(-100000px);
+    }
+}
+
+/* player boss001 */
+@keyframes boss001Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4630px 0;
+    }
+}
+
+/* player boss002 */
+@keyframes boss002Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4630px 0;
+    }
+}
+
+/* player boss003 */
+@keyframes boss003Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4630px 0;
+    }
+}
+
+/* player boss004 */
+@keyframes boss004Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4319px 0;
+    }
+}
+
+/* player boss005 */
+@keyframes boss005Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4319px 0;
+    }
+}
+
+/* player boss006 */
+@keyframes boss006Walk {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -4319px 0;
+    }
+}
+
+/* player medusa */
+@keyframes medusaIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -198px 0;
+    }
+}
+
+@keyframes medusaWalk {
+    0% {
+        background-position: 0 -64px;
+    }
+
+    100% {
+        background-position: -264px -64px;
+    }
+}
+
+@keyframes medusaAttack {
+    0% {
+        background-position: 0 -128px;
+    }
+
+    100% {
+        background-position: -368px -128px;
+    }
+}
+
+@keyframes medusaHurt {
+    0% {
+        background-position: 0 -199px;
+    }
+
+    100% {
+        background-position: -134px -199px;
+    }
+}
+
+@keyframes medusaDeath {
+    0% {
+        background-position: 0 -199px;
+    }
+
+    100% {
+        background-position: -335px -199px;
+    }
+}
+
+/* player smallDragon */
+@keyframes smallDragonIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -237px 0;
+    }
+}
+
+@keyframes smallDragonWalk {
+    0% {
+        background-position: 0 -38px;
+    }
+
+    100% {
+        background-position: -316px -38px;
+    }
+}
+
+@keyframes smallDragonAttack {
+    0% {
+        background-position: 0 -76px;
+    }
+
+    100% {
+        background-position: -309px -76px;
+    }
+}
+
+@keyframes smallDragonDeath {
+    0% {
+        background-position: 0 -114px;
+    }
+
+    100% {
+        background-position: -237px -114px;
+    }
+}
+
+/* player lizardman */
+@keyframes lizardmanIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -276px 0;
+    }
+}
+
+@keyframes lizardmanWalk {
+    0% {
+        background-position: 0 -51px;
+    }
+
+    100% {
+        background-position: -552px -51px;
+    }
+}
+
+@keyframes lizardmanAttack {
+    0% {
+        background-position: 0 -107px;
+    }
+
+    100% {
+        background-position: -500px -107px;
+    }
+}
+
+@keyframes lizardmanDeath {
+    0% {
+        background-position: 0 -169px;
+    }
+
+    100% {
+        background-position: -475px -169px;
+    }
+}
+
+/* player demon */
+@keyframes demonIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -252px 0;
+    }
+}
+
+@keyframes demonWalk {
+    0% {
+        background-position: 0 -97px;
+    }
+
+    100% {
+        background-position: -504px -97px;
+    }
+}
+
+@keyframes demonAttack {
+    0% {
+        background-position: 0 -194px;
+    }
+
+    100% {
+        background-position: -468px -194px;
+    }
+}
+
+@keyframes demonDeath {
+    0% {
+        background-position: 0 -314px;
+    }
+
+    100% {
+        background-position: -465px -314px;
+    }
+}
+
+/* player jinn */
+@keyframes jinnIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -135px 0;
+    }
+}
+
+@keyframes jinnWalk {
+    0% {
+        background-position: 0 -92px;
+    }
+
+    100% {
+        background-position: -216px -92px;
+    }
+}
+
+@keyframes jinnAttack {
+    0% {
+        background-position: 0 -184px;
+    }
+
+    100% {
+        background-position: -332px -184px;
+    }
+}
+
+@keyframes jinnDeath {
+    0% {
+        background-position: 0 -276px;
+    }
+
+    100% {
+        background-position: -162px -276px;
+    }
+}
+
+/* player dragon */
+@keyframes dragonIdle {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -483px 0;
+    }
+}
+
+@keyframes dragonWalk {
+    0% {
+        background-position: 0 -86px;
+    }
+
+    100% {
+        background-position: -805px -86px;
+    }
+}
+
+@keyframes dragonAttack {
+    0% {
+        background-position: 0 -172px;
+    }
+
+    100% {
+        background-position: -815px -172px;
+    }
+}
+
+@keyframes dragonDeath {
+    0% {
+        background-position: 0 -303px;
+    }
+
+    100% {
+        background-position: -492px -303px;
+    }
+}
+
+.damaged {
+    width: 256px;
+    height: 256px;
+    background-image: url(../img/spr-explosion.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    position: absolute;
+    top: calc(50% - (256px / 2));
+    left: calc(50% - (256px / 2));
+    z-index: 1;
+    pointer-events: none;
+    animation: damaged 0.8s 0s steps(10, end) infinite;
+}
+
+/* damage animation */
+@keyframes damaged {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -2560px 0;
+    }
+}

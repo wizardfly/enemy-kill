@@ -1,0 +1,488 @@
+<!--
+// - - - - - - - - - - - - - - - - - - -
+// W F - G A M E - R U N - v001
+// - - - - - - - - - - - - - - - - - - -
+// #wf-202303152044
+// #wf-202306112018
+// - - - - - - - - - - - - - - - - - - -
+// a WizrdFLY [dev front end web]
+// https://wizrdfly.rf.gd
+// - - - - - - - - - - - - - - - - - - -
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="monetag" content="c589da7a717db5827d4caa22ea5b7a58"/>
+
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="icon" type="image/ico" href="img/favicon.ico"/>
+
+	<!-- fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+	<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"/>
+
+	<link href="https://fonts.cdnfonts.com/css/anface-personal-use?styles=156765" rel="stylesheet"/>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-2SDVPCNFZH"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-2SDVPCNFZH');
+	</script>
+
+	<!-- clarity -->
+	<script type="text/javascript">
+		(function(c,l,a,r,i,t,y){
+			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		})(window, document, "clarity", "script", "heghwpwacy");
+	</script>
+
+	<!-- styles -->
+	<link rel="stylesheet" href="css/styles.css"/>
+
+	<title>WF GAME RUN</title>
+</head>
+<!-- <body class="noFilter"> -->
+	<body>
+
+		<!-- game -->
+		<section class="game">
+
+			<!-- beta version -->
+			<div class="version">
+				<p>
+					Beta Build v0.202306112018
+				</p>
+			</div>
+
+			<!-- message -->
+			<!-- <div class="message success active">
+				<div>
+					<i class="spr content msgSuccess"></i>
+					<i class="spr content msgError"></i>
+					<i class="spr content msgInfo"></i>
+					<i class="spr content msgAlert"></i>
+					<p>
+						<strong>
+							Lorem ipsum dolor
+						</strong>
+						Illum ad asperiores quas earum, quidem deleniti, velit beatae blanditiis accusantium expedita.
+					</p>
+				</div>
+			</div> -->
+			<div class="message">
+				<!-- dynamic content -->
+			</div>
+
+			<!-- start -->
+			<div class="boxStart">
+				<!-- brand -->
+				<div class="brand">
+					<!-- name -->
+					<h1>
+						Enemy
+						<em>
+							Kill
+						</em>
+					</h1>
+
+					<!-- sprites -->
+					<i class="spr content sStart"></i>
+					<i class="spr content sDragon"></i>
+					<i class="spr content sDragonAttack"></i>
+					<i class="spr content sJinn"></i>
+					<i class="spr content sJinnAttack"></i>
+
+					<!-- buttons -->
+					<div class="boxBtn">
+						<ul>
+							<li>
+								<a href="#" title="Start" class="btnStart">
+									<i class="spr content sBtnStart"></i>
+									<strong>
+										Start
+									</strong>
+								</a>
+							</li>
+							<!-- <li>
+								<a href="#" title="Options" class="btnOptions">
+									<i class="spr content sBtnOptions"></i>
+									<strong>
+										Options
+									</strong>
+								</a>
+							</li> -->
+							<li>
+								<a href="//wizrdfly.rf.gd" title="Wizard Fly - Dev Front End Web" class="btnHome">
+									<i class="spr content sBtnHome"></i>
+								</a>
+								<a href="//www.facebook.com/doniextreme" title="Facebook" class="btnFacebook">
+									<i class="spr content sBtnFacebook"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- aside menu [options] -->
+			<aside class="asideMenu">
+				<!-- close -->
+				<div class="btnMenu mask"></div>
+
+				<div class="content">
+					<div class="box">
+						<h1>
+							Enemy
+							<em>
+								Kill
+							</em>
+						</h1>
+					</div>
+					<!-- <div class="box">
+						<p>
+							Create enemys
+						</p>
+						<ul class="aMenu">
+							<li>
+								<a href="#" title="start" class="btnStart">
+									<i class="spr content dKill"></i>
+									<strong>
+										start
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="add tree" class="btnTree">
+									<i class="spr content dKill"></i>
+									<strong>
+										add tree
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="random enemy" class="btnEnemy">
+									<i class="spr content dKill"></i>
+									<strong>
+										~random
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy medusa" class="btnEnemyMedusa">
+									<i class="spr content dKill"></i>
+									<strong>
+										medusa
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy demon" class="btnEnemyDemon">
+									<i class="spr content dKill"></i>
+									<strong>
+										demon
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy jinn" class="btnEnemyJinn">
+									<i class="spr content dKill"></i>
+									<strong>
+										jinn
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy dragon" class="btnEnemyDragon">
+									<i class="spr content dKill"></i>
+									<strong>
+										dragon
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy smallDragon" class="btnEnemySmallDragon">
+									<i class="spr content dKill"></i>
+									<strong>
+										smallDragon
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy lizardman" class="btnEnemyLizardman">
+									<i class="spr content dKill"></i>
+									<strong>
+										lizardman
+									</strong>
+								</a>
+							</li>
+						</ul>
+					</div> -->
+					<!-- <div class="box">
+						<p>
+							Create boses
+						</p>
+						<ul class="aMenu">
+							<li>
+								<a href="#" title="enemy troll 001" class="btnEnemyBoss001">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 001
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy troll 002" class="btnEnemyBoss002">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 002
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy troll 003" class="btnEnemyBoss003">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 003
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy troll 004" class="btnEnemyBoss004">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 004
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy troll 005" class="btnEnemyBoss005">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 005
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="enemy troll 006" class="btnEnemyBoss006">
+									<i class="spr content dKill"></i>
+									<strong>
+										troll 006
+									</strong>
+								</a>
+							</li>
+						</ul>
+					</div> -->
+					<div class="box">
+						<p>
+							Colors
+						</p>
+						<!-- menu -->
+						<ul class="aMenu">
+							<li>
+								<a href="#" title="invert color" class="btnInvert">
+									<i class="spr content dKill"></i>
+									<strong>
+										invert
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="grayscale color" class="btnGray">
+									<i class="spr content dKill"></i>
+									<strong>
+										grayscale
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="random color" class="btnRand">
+									<i class="spr content dKill"></i>
+									<strong>
+										random
+									</strong>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="reset color" class="btnReset">
+									<i class="spr content dKill"></i>
+									<strong>
+										reset
+									</strong>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="box dev">
+						<p>
+							2023 - by
+							<a href="//wizrdfly.rf.gd" title="Wizard FLY - Dev Front End Web" target="_blank">
+								Wizard FLY
+							</a>
+						</p>
+					</div>
+				</div>
+			</aside>
+		</div>
+
+		<!-- btn menu -->
+		<div class="boxBtnMenu">
+			<a href="#" title="Menu" class="btnMenu">
+				<i class="spr content sBtnOptions"></i>
+			</a>
+		</div>
+
+		<!-- life -->
+		<div class="boxLife">
+			<!-- dynamic content -->
+		</div>
+
+		<div class="boxPlayer">
+			<!-- points -->
+			<div class="boxPoints">
+				<i class="spr content dMoney"></i>
+				<span>
+					0
+					<!-- dynamic content -->
+				</span>
+			</div>
+
+			<!-- stage -->
+			<div class="boxStage">
+				<i class="spr content dStage"></i>
+				<span>
+					0
+					<!-- dynamic content -->
+				</span>
+			</div>
+
+			<!-- kills -->
+			<div class="boxKills">
+				<i class="spr content dKill"></i>
+				<span>
+					0
+					<!-- dynamic content -->
+				</span>
+			</div>
+		</div>
+
+		<!-- bar -->
+		<div class="boxBar">
+			<i class="spr content bar">
+				<b></b>
+				<!-- dynamic content -->
+			</i>
+			<!-- <i class="spr content barDragon"></i> -->
+		</div>
+
+		<!-- backgrounds -->
+		<div class="boxBgs">
+			<i class="spr bg bg001"></i>
+			<i class="spr bg bg002"></i>
+			<i class="spr bg bg003"></i>
+			<i class="spr bg bg004"></i>
+			<i class="spr bg bg005"></i>
+			<i class="spr bg bg006"></i>
+			<i class="spr bg bg007"></i>
+			<i class="spr bg bg008"></i>
+			<i class="spr bg bg009"></i>
+			<i class="spr bg bg010"></i>
+			<i class="spr bg bg011"></i>
+		</div>
+
+		<!-- boxCards -->
+		<div class="boxCards">
+			<div class="card">
+				<div class="top afterClear">
+					<i class="star">
+						<i class="spr content star"></i>
+						<!-- dynamic content -->
+					</i>
+					<p class="name">
+						enemy name
+						<!-- dynamic content -->
+					</p>
+				</div>
+				<div class="center">
+					<i class="spr demon idle"></i>
+					<!-- dynamic content -->
+				</div>
+				<div class="bottom">
+					<p class="type">
+						The Rare Class
+						<!-- dynamic content -->
+					</p>
+					<p class="description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						<!-- dynamic content -->
+					</p>
+					<ul class="attributes">
+						<li class="life">
+							<i class="spr content dLife"></i>
+							<span class="aLife">
+								<b style="width:100%;"></b>
+							</span>
+							<!-- dynamic content -->
+						</li>
+						<li class="attack">
+							<i class="spr content dAttack"></i>
+							<span class="aAttack">
+								<b style="width:100%;"></b>
+							</span>
+							<!-- dynamic content -->
+						</li>
+						<li class="money">
+							<i class="spr content dMoney"></i>
+							<span class="aMoney">
+								<b style="width:100%;"></b>
+							</span>
+							<!-- dynamic content -->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- boxLines -->
+		<div class="boxLines">
+			<span class="spr content limitBar"></span>
+
+			<!-- line -->
+			<ul class="lines afterClear">
+				<li class="bgLine">
+					<div class="box">
+						<!-- dynamic content -->
+					</div>
+				</li>
+				<li class="bgLine">
+					<div class="box">
+						<!-- dynamic content -->
+					</div>
+				</li>
+				<li class="bgLine">
+					<div class="box">
+						<!-- dynamic content -->
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- scripts -->
+	<script src="js/scripts.js"></script>
+
+	<script type="text/javascript">
+		var infolinks_pid = 3398421;
+		var infolinks_wsid = 0;
+	</script>
+	<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+
+</body>
+</html>
